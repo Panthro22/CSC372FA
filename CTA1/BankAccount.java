@@ -14,11 +14,7 @@ public class BankAccount {
     }
 
     public void withdrawal(double amount) {
-        if (this.balance >= amount) {
-            this.balance -= amount;
-        } else {
-            System.out.println("Insufficient funds!");
-        }
+            this.balance -= amount;    
     }
 
     public void setFirstName(String firstName) {
