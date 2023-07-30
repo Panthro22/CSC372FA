@@ -1,6 +1,5 @@
 package CTA2;
 
-import CTA1.BankAccount;
 import CTA1.CheckingAccount;
 import javax.swing.*;
 import java.awt.*;
