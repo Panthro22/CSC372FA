@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 public class BankGUI extends JFrame implements ActionListener {
     private CheckingAccount checkingAccount;
@@ -27,7 +28,7 @@ public class BankGUI extends JFrame implements ActionListener {
         depositButton = new JButton("Deposit");
         withdrawButton = new JButton("Withdraw");
         amountField = new JTextField(10);
-        
+
         // Add action listeners
         depositButton.addActionListener(this);
         withdrawButton.addActionListener(this);
@@ -49,9 +50,43 @@ public class BankGUI extends JFrame implements ActionListener {
         pack();
         setLocationRelativeTo(null); // Center the window on the screen
     }
+     public static void main(String[] args) {// Create a new thread to run the GUI
+        SwingUtilities.invokeLater(() -> { // Use a lambda expression to create a new Runnable object. SwingUtilities.invokeLater() takes a Runnable object as an argument and runs it on the Event Dispatch Thread.
+            BankGUI app = new BankGUI();
+            app.setVisible(true);
+        });
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-    }}
+        if (e.getSource() == depositButton) { // If the deposit button is clicked
+            try {
+                double amount = Double.parseDouble(amountField.getText());
+                checkingAccount.deposit(amount);
+                balanceLabel.setText("Balance: $" + formatAmount(checkingAccount.getBalance()));
+                amountField.setText("");
+            } catch (NumberFormatException ex) {// If the input is not a number
+                showErrorAlert("Invalid input. Please enter a valid number amount.");
+            }// else if established for later button additions
+        } else if (e.getSource() == withdrawButton) {// If the withdraw button is clicked
+            try {
+                double amount = Double.parseDouble(amountField.getText());
+                checkingAccount.processWithdrawal(amount);
+                balanceLabel.setText("Balance: $" + formatAmount(checkingAccount.getBalance()));
+                amountField.setText("");
+                
+            } catch (NumberFormatException ex) {// If the input is not a number
+                showErrorAlert("Invalid input. Please enter a valid number amount.");
+            }
+        }
+
+    }
+
+    private void showErrorAlert(String message) {// Displays an error alert
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    private String formatAmount(double amount) {// Formats the amount to two decimal places for american currency
+        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        return decimalFormat.format(amount);
+    }
+}
