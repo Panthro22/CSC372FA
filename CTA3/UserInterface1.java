@@ -10,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -64,7 +66,7 @@ public class UserInterface1 extends Application {
 
             menu.getItems().addAll(menuItem1, menuItem2, menuItem3, menuItem4);
 
-            menuItem1.setOnAction(e -> printDateTime());//Lambda expression
+            menuItem1.setOnAction(e -> printDateTime());//Lambda expression e is the event, -> is the arrow, printDateTime() is the method
             menuItem2.setOnAction(e -> writeToLog());
             menuItem3.setOnAction(e -> changeBackgroundColor());
             menuItem4.setOnAction(e -> System.exit(0));
@@ -90,7 +92,16 @@ public class UserInterface1 extends Application {
     private void writeToLog() {
         // Get the text from the textField
         String text = textBox.getText();
-
+        
+        // Check if the text is empty
+        if (text.isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Empty Text");
+            alert.setContentText("The text is empty. Please enter some text before writing to log.txt.");
+            alert.showAndWait();
+            return; // Exit the method to prevent writing an empty log file
+        }
         // Create a File object for "log.txt" in the same folder as the application
         File file = new File("log.txt");
 
