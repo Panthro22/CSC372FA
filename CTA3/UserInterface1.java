@@ -6,12 +6,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -69,12 +71,27 @@ public class UserInterface1 extends Application {
             menuItem1.setOnAction(e -> printDateTime());//Lambda expression e is the event, -> is the arrow, printDateTime() is the method
             menuItem2.setOnAction(e -> writeToLog());
             menuItem3.setOnAction(e -> changeBackgroundColor());
-            menuItem4.setOnAction(e -> System.exit(0));
+            menuItem4.setOnAction(e -> handleExit());
 
             this.getMenus().add(menu);
         }
     }
+    
+    private void handleExit() {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Exit Confirmation");
+        alert.setHeaderText("Are you sure you want to exit?");
+        alert.setContentText("Click OK to confirm and exit the program.");
 
+        // Wait for the user's response
+        Optional<ButtonType> result = alert.showAndWait();/* Optional is a container object which may or may not contain a non-null value. 
+                                                             If a value is present, isPresent() will return true and get() will return the value.
+                                                          */
+        // If the user clicked OK, exit the program
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.exit(0);
+        }
+    }
     private void printDateTime() {
     // Get current date and time
     LocalDateTime currentDateTime = LocalDateTime.now();
