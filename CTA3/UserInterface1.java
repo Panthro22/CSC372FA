@@ -55,19 +55,8 @@ public class UserInterface1 extends Application {
         Scene scene = new Scene(pane, 450, 225);
         primaryStage.setScene(scene);
         primaryStage.setOnCloseRequest(e -> {
-            // Show confirmation alert for exit
-            Alert confirmExitAlert = new Alert(AlertType.CONFIRMATION);
-            confirmExitAlert.setTitle("Confirm Exit");
-            confirmExitAlert.setHeaderText(null);
-            confirmExitAlert.setContentText("Are you sure you want to exit?");
-        
-            // Show the alert and wait for the user's response
-            Optional<ButtonType> result = confirmExitAlert.showAndWait();
-
-            // If the user chooses to cancel the exit, consume the event to prevent closing
-            if (result.isPresent() && result.get() != ButtonType.OK) {
-                e.consume();
-            }
+            e.consume();// consume the event to prevent it from bubbling up to the OS
+            handleExit();// handle the event
         });
         primaryStage.show();
     }
@@ -100,25 +89,26 @@ public class UserInterface1 extends Application {
 
         // Wait for the user's response
         Optional<ButtonType> result = alert.showAndWait();/* Optional is a container object which may or may not contain a non-null value. 
-                                                             If a value is present, isPresent() will return true and get() will return the value.
+                                                             If a value is present isPresent() will return true and get() will return the value.
                                                           */
-        // If the user clicked OK, exit the program
+        // Determine which button was clicked
         if (result.isPresent() && result.get() == ButtonType.OK) {
             System.exit(0);
         }
     }
     private void printDateTime() {
-    // Get current date and time
-    LocalDateTime currentDateTime = LocalDateTime.now();
+        // Get current date and time
+        LocalDateTime currentDateTime = LocalDateTime.now();
 
-    //formatted to standard non-military time
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-uuuu hh:mm:ss a");
+        //formatted to standard non-military time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-uuuu hh:mm:ss a");
+    
 
-    // Put date and time into a string
-    String formattedDateTime = currentDateTime.format(formatter);
+        // Put date and time into a string
+        String formattedDateTime = currentDateTime.format(formatter);
 
-    // Formatted date and time into the text box
-    textBox.setText(formattedDateTime);
+        // Formatted date and time into the text box
+        textBox.setText(formattedDateTime);
     }
 
     private void writeToLog() {
@@ -134,14 +124,14 @@ public class UserInterface1 extends Application {
             alert.showAndWait();
             return; // Exit the method to prevent writing an empty log file
         }
-        // Create a File object for "log.txt" in the same folder as the application
+        // Create a File object for log.txt in the same folder
         File file = new File("log.txt");
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            // Write the contents of the textField to the file
+            // Write textfield text to log.txt
             writer.write(text);
 
-            // Optional: Add a newline character at the end of the text
+            // Add a newline character
             writer.newLine();
 
             // Flush and close the writer
@@ -155,7 +145,7 @@ public class UserInterface1 extends Application {
              confirmationAlert.showAndWait();
         
             // Output confirmation message
-            System.out.println("Text written to log.txt successfully!");
+            System.out.println("Text written to log.txt file successfully!");
         } catch (IOException e) {
             // Handle any IO exceptions that may occur
             e.printStackTrace();
