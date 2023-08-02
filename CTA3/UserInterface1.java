@@ -138,6 +138,12 @@ public class UserInterface1 extends Application {
         } catch (IOException e) {
             // Handle any IO exceptions that may occur
             e.printStackTrace();
+            //User friendly error message
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("File I/O Error");
+            alert.setContentText("An error occurred while writing to log.txt. Please check if the file is accessible.");
+            alert.showAndWait();
         }
     }
 
