@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "UserInterface1",
+            "request": "launch",
+            "mainClass": "CTA3.UserInterface1",
+            "projectName": "CSC372_c6ccd789",
+            "vmArgs": "--module-path \"C:/Users/Paynt/Documents/JAVA_HOME/javafx-sdk-20.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "TestCheckingAccount",
+            "request": "launch",
+            "mainClass": "CTA1.TestCheckingAccount",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
+            "name": "BankGUI",
+            "request": "launch",
+            "mainClass": "CTA2.BankGUI",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
+            "name": "JSwingExample",
+            "request": "launch",
+            "mainClass": "CTA2.JSwingExample",
+            "projectName": "CSC372_c6ccd789"
+        },
+    ]
+}
