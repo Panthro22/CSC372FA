@@ -1,5 +1,8 @@
 package CTA3;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javafx.application.Application;
 //import javafx.event.ActionEvent;
 //import javafx.event.EventHandler;
@@ -65,8 +68,18 @@ public class UserInterface1 extends Application {
     }
 
     private void printDateTime() {
-        // Code to print the date and time in a text box
-    }
+    // Get the current date and time
+    LocalDateTime currentDateTime = LocalDateTime.now();
+
+    // Create a DateTimeFormatter to format the date and time
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-uuuu hh:mm:ss a");
+
+    // Format the current date and time as a string
+    String formattedDateTime = currentDateTime.format(formatter);
+
+    //Formatted date and time into the text box
+    textBox.setText(formattedDateTime);
+}
 
     private void writeToLog() {
         // Code to write the text box contents to "log.txt"
