@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -19,7 +20,7 @@ public class UserInterface1 extends Application {
 
     private boolean colorChanged = false;
     private Rectangle background;
-    private Text textBox;
+    private TextField textBox;
 
     public static void main(String[] args) {
         launch(args);
@@ -33,12 +34,11 @@ public class UserInterface1 extends Application {
         StackPane pane = new StackPane();
         background = new Rectangle(400, 300);
         background.setFill(Color.WHITE);
-        pane.getChildren().add(background);
-        pane.getChildren().add(menuBar);
+        pane.getChildren().addAll(background, menuBar); // Add the MenuBar first
+        StackPane.setAlignment(menuBar, javafx.geometry.Pos.TOP_CENTER);
 
-        textBox = new Text("This is a text box.");
-        pane.getChildren().add(textBox);
-
+        textBox = new TextField("Type here...");
+        pane.getChildren().add(textBox); // Add the TextField later
         Scene scene = new Scene(pane, 400, 300);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -73,10 +73,7 @@ public class UserInterface1 extends Application {
     }
 
     private void changeBackgroundColor() {
-        if (!colorChanged) {
-            double hue = Math.random() * 360;
-            background.setFill(Color.hsb(hue, 1.0, 1.0));
-            colorChanged = true;
-        }
+        double hue = Math.random() * 360; // Generate a random hue value between 0 and 360 (full color range)
+        background.setFill(Color.hsb(hue, 1.0, 1.0));
     }
 }
