@@ -1,16 +1,15 @@
 package CTA3;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-//import javafx.event.ActionEvent;
-//import javafx.event.EventHandler;
 import javafx.scene.Scene;
-//import javafx.scene.control.Alert;
-//import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -18,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class UserInterface1 extends Application {
@@ -36,12 +34,12 @@ public class UserInterface1 extends Application {
         primaryStage.setTitle("User Interface One");
 
         MyMenuBar menuBar = new MyMenuBar();
-        StackPane pane = new StackPane(); // StackPane is a container that stacks its children on top of each other
+        StackPane pane = new StackPane();
         background = new Rectangle();
         background.setFill(Color.WHITE);
 
-        background.widthProperty().bind(pane.widthProperty());//binds the width of the background to the width of the pane
-        background.heightProperty().bind(pane.heightProperty());//binds the height of the background to the height of the pane
+        background.widthProperty().bind(pane.widthProperty());//binds background to the width of the pane
+        background.heightProperty().bind(pane.heightProperty());//binds background to the height of the pane
     
         pane.getChildren().addAll(background, menuBar); 
         StackPane.setAlignment(menuBar, javafx.geometry.Pos.TOP_CENTER);//aligns the menu bar to the top of the pane
@@ -76,25 +74,47 @@ public class UserInterface1 extends Application {
     }
 
     private void printDateTime() {
-    // Get the current date and time
+    // Get current date and time
     LocalDateTime currentDateTime = LocalDateTime.now();
 
-    // Create a DateTimeFormatter to format the date and time
+    //formatted to standard non-military time
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-uuuu hh:mm:ss a");
 
-    // Format the current date and time as a string
+    // Put date and time into a string
     String formattedDateTime = currentDateTime.format(formatter);
 
-    //Formatted date and time into the text box
+    // Formatted date and time into the text box
     textBox.setText(formattedDateTime);
-}
+    }
 
     private void writeToLog() {
-        // Code to write the text box contents to "log.txt"
+        // Get the text from the textField
+        String text = textBox.getText();
+
+        // Create a File object for "log.txt" in the same folder as the application
+        File file = new File("log.txt");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            // Write the contents of the textField to the file
+            writer.write(text);
+
+            // Optional: Add a newline character at the end of the text
+            writer.newLine();
+
+            // Flush and close the writer
+            writer.flush();
+            writer.close();
+
+            // Output confirmation message
+            System.out.println("Text written to log.txt successfully!");
+        } catch (IOException e) {
+            // Handle any IO exceptions that may occur
+            e.printStackTrace();
+        }
     }
 
     private void changeBackgroundColor() {
-        double hue = Math.random() * 360; // Generate a random hue value between 0 and 360 (full color range)
-        background.setFill(Color.hsb(hue, 1.0, 1.0));
+        double randomColor = Math.random() * 360; // Get a random color
+        background.setFill(Color.hsb(randomColor, 1.0, 1.0));
     }
 }
