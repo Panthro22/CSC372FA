@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 //import javafx.event.ActionEvent;
 //import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -34,22 +36,28 @@ public class UserInterface1 extends Application {
         primaryStage.setTitle("User Interface One");
 
         MyMenuBar menuBar = new MyMenuBar();
-        StackPane pane = new StackPane();
-        background = new Rectangle(400, 300);
+        StackPane pane = new StackPane(); // StackPane is a container that stacks its children on top of each other
+        background = new Rectangle();
         background.setFill(Color.WHITE);
-        pane.getChildren().addAll(background, menuBar); // Add the MenuBar first
-        StackPane.setAlignment(menuBar, javafx.geometry.Pos.TOP_CENTER);
+
+        background.widthProperty().bind(pane.widthProperty());//binds the width of the background to the width of the pane
+        background.heightProperty().bind(pane.heightProperty());//binds the height of the background to the height of the pane
+    
+        pane.getChildren().addAll(background, menuBar); 
+        StackPane.setAlignment(menuBar, javafx.geometry.Pos.TOP_CENTER);//aligns the menu bar to the top of the pane
 
         textBox = new TextField("Type here...");
-        pane.getChildren().add(textBox); // Add the TextField later
-        Scene scene = new Scene(pane, 400, 300);
+        textBox.setMaxWidth(200);
+        StackPane.setAlignment(textBox, Pos.CENTER_LEFT);
+        pane.getChildren().add(textBox);
+        Scene scene = new Scene(pane, 450, 225);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public class MyMenuBar extends MenuBar {
         public MyMenuBar() {
-            Menu menu = new Menu("File");
+            Menu menu = new Menu("File Menu");
 
             MenuItem menuItem1 = new MenuItem("Print Date and Time");
             MenuItem menuItem2 = new MenuItem("Write to log.txt");
@@ -58,7 +66,7 @@ public class UserInterface1 extends Application {
 
             menu.getItems().addAll(menuItem1, menuItem2, menuItem3, menuItem4);
 
-            menuItem1.setOnAction(e -> printDateTime());
+            menuItem1.setOnAction(e -> printDateTime());//Lambda expression
             menuItem2.setOnAction(e -> writeToLog());
             menuItem3.setOnAction(e -> changeBackgroundColor());
             menuItem4.setOnAction(e -> System.exit(0));
