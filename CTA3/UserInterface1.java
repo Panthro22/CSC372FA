@@ -54,6 +54,21 @@ public class UserInterface1 extends Application {
         pane.getChildren().add(textBox);
         Scene scene = new Scene(pane, 450, 225);
         primaryStage.setScene(scene);
+        primaryStage.setOnCloseRequest(e -> {
+            // Show confirmation alert for exit
+            Alert confirmExitAlert = new Alert(AlertType.CONFIRMATION);
+            confirmExitAlert.setTitle("Confirm Exit");
+            confirmExitAlert.setHeaderText(null);
+            confirmExitAlert.setContentText("Are you sure you want to exit?");
+        
+            // Show the alert and wait for the user's response
+            Optional<ButtonType> result = confirmExitAlert.showAndWait();
+
+            // If the user chooses to cancel the exit, consume the event to prevent closing
+            if (result.isPresent() && result.get() != ButtonType.OK) {
+                e.consume();
+            }
+        });
         primaryStage.show();
     }
 
@@ -132,7 +147,13 @@ public class UserInterface1 extends Application {
             // Flush and close the writer
             writer.flush();
             writer.close();
-
+             // Show confirmation message
+             Alert confirmationAlert = new Alert(AlertType.INFORMATION);
+             confirmationAlert.setTitle("Success");    
+             confirmationAlert.setHeaderText(null);        
+             confirmationAlert.setContentText("Text written to log.txt successfully!");
+             confirmationAlert.showAndWait();
+        
             // Output confirmation message
             System.out.println("Text written to log.txt successfully!");
         } catch (IOException e) {
