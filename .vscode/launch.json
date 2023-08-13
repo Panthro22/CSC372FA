@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "FlowLayoutExample",
+            "request": "launch",
+            "mainClass": "CTA4.FlowLayoutExample",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
             "name": "UserInterface1",
             "request": "launch",
             "mainClass": "CTA3.UserInterface1",
@@ -38,6 +45,6 @@
             "request": "launch",
             "mainClass": "CTA2.JSwingExample",
             "projectName": "CSC372_c6ccd789"
-        },
+        }
     ]
 }
