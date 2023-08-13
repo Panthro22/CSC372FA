@@ -25,7 +25,7 @@ public class Rectangle extends Shape {
     }
     
     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle(5.0, 10.0);
+        Rectangle rectangle = new Rectangle(12.4, 17.1);
         System.out.println(rectangle.toString());
     }
 }

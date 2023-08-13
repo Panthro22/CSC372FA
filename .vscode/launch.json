@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Triangle",
+            "request": "launch",
+            "mainClass": "CTA4.Triangle",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
+            "name": "Circle",
+            "request": "launch",
+            "mainClass": "CTA4.Circle",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
+            "name": "Rectangle",
+            "request": "launch",
+            "mainClass": "CTA4.Rectangle",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
             "name": "FlowLayoutExample",
             "request": "launch",
             "mainClass": "CTA4.FlowLayoutExample",
