@@ -24,8 +24,5 @@ public class Rectangle extends Shape {
         return "Rectangle - Area: " + area() + ", Perimeter: " + perimeter();
     }
     
-    public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle(12.4, 17.1);
-        System.out.println(rectangle.toString());
-    }
+    
 }

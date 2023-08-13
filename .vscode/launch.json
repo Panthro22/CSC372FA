@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ShapeArray",
+            "request": "launch",
+            "mainClass": "CTA4.ShapeArray",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
             "name": "Triangle",
             "request": "launch",
             "mainClass": "CTA4.Triangle",
