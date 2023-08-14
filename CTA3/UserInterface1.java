@@ -159,7 +159,7 @@ public class UserInterface1 extends Application {
     }
 
     private void changeBackgroundColor() {
-        double randomColor = Math.random() * 360; // Get a random color
-        background.setFill(Color.hsb(randomColor, 1.0, 1.0));
+        double greenColor = 90 + Math.random() * 70; // Get a random green color
+        background.setFill(Color.hsb(greenColor, 1.0, 1.0));
     }
 }
