@@ -2,8 +2,8 @@ package CTA4;
 
 public class ShapeArray {
     public static void main(String[] args) {
-        Triangle triangle = new Triangle(3.0, 4.0, 5.0);
-        Circle circle = new Circle(5.0);
+        Triangle triangle = new Triangle(2.0, 3.0, 4.0);
+        Circle circle = new Circle(3.5);
         Rectangle square = new Rectangle(6.0, 6.0);
         
         Shape[] shapeArray = {triangle, circle, square};

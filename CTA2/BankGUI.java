@@ -61,9 +61,13 @@ public class BankGUI extends JFrame implements ActionListener {
         if (e.getSource() == depositButton) { // If the deposit button is clicked
             try {
                 double amount = Double.parseDouble(amountField.getText());
+                if (amount > 0) { // Check if the entered amount is positive
                 checkingAccount.deposit(amount);
                 balanceLabel.setText("Balance: $" + formatAmount(checkingAccount.getBalance()));
                 amountField.setText("");
+            } else {
+                showErrorAlert("Please enter a positive amount.");
+            }
             } catch (NumberFormatException ex) {// If the input is not a number
                 showErrorAlert("Invalid input. Please enter a valid number amount.");
             }// else if established for later button additions
