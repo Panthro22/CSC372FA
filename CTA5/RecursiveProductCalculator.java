@@ -9,7 +9,7 @@ public class RecursiveProductCalculator {
         
         System.out.println("Enter five numbers:");
         for (int i = 0; i < 5; i++) {
-            numbers[i] = scanner.nextInt();
+            numbers[i] = getValidNumber(scanner, "Enter number " + (i + 1) + ": ");
         }
         
         int product = calculateProduct(numbers, 0);
@@ -22,5 +22,20 @@ public class RecursiveProductCalculator {
         } else {
             return numbers[index] * calculateProduct(numbers, index + 1);
         }
+    }
+    
+    public static int getValidNumber(Scanner scanner, String prompt) {
+        int number;
+        while (true) {
+            System.out.print(prompt);
+            if (scanner.hasNextInt()) {
+                number = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine(); // Clear the input buffer
+            }
+        }
+        return number;
     }
 }
