@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RecursiveProductCalculator",
+            "request": "launch",
+            "mainClass": "CTA5.RecursiveProductCalculator",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
+            "name": "FactorialExample",
+            "request": "launch",
+            "mainClass": "CTA5.FactorialExample",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
             "name": "ShapeArray",
             "request": "launch",
             "mainClass": "CTA4.ShapeArray",
