@@ -16,14 +16,17 @@ public class RecursiveProductCalculator {
         System.out.println("Product of the five numbers: " + product);
     }
     
+    // Recursive method to calculate the product of numbers in an array
     public static int calculateProduct(int[] numbers, int index) {
         if (index == numbers.length - 1) {
-            return numbers[index];
+            return numbers[index]; // Base case: return the last number
         } else {
+            // Recursively calculate the product of the remaining numbers
             return numbers[index] * calculateProduct(numbers, index + 1);
         }
     }
     
+    // Custom method to read valid positive integers from the user
     public static int getValidPositiveNumber(Scanner scanner, String prompt) {
         int number;
         while (true) {
@@ -31,7 +34,7 @@ public class RecursiveProductCalculator {
             if (scanner.hasNextInt()) {
                 number = scanner.nextInt();
                 if (number > 0) {
-                    break;
+                    break; // Exit the loop if a positive number is entered
                 } else {
                     System.out.println("Please enter a positive number.");
                 }
@@ -40,6 +43,6 @@ public class RecursiveProductCalculator {
                 scanner.nextLine(); // Clear the input buffer
             }
         }
-        return number;
+        return number; // Return the valid positive number
     }
 }
