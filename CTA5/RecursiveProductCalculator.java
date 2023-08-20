@@ -7,9 +7,9 @@ public class RecursiveProductCalculator {
         Scanner scanner = new Scanner(System.in);
         int[] numbers = new int[5];
         
-        System.out.println("Enter five numbers:");
+        System.out.println("Enter five positive integers:");
         for (int i = 0; i < 5; i++) {
-            numbers[i] = getValidNumber(scanner, "Enter number " + (i + 1) + ": ");
+            numbers[i] = getValidPositiveNumber(scanner, "Enter number " + (i + 1) + ": ");
         }
         
         int product = calculateProduct(numbers, 0);
@@ -24,15 +24,19 @@ public class RecursiveProductCalculator {
         }
     }
     
-    public static int getValidNumber(Scanner scanner, String prompt) {
+    public static int getValidPositiveNumber(Scanner scanner, String prompt) {
         int number;
         while (true) {
             System.out.print(prompt);
             if (scanner.hasNextInt()) {
                 number = scanner.nextInt();
-                break;
+                if (number > 0) {
+                    break;
+                } else {
+                    System.out.println("Please enter a positive number.");
+                }
             } else {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid positive integer.");
                 scanner.nextLine(); // Clear the input buffer
             }
         }
