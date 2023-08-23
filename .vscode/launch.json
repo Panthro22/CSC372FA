@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TestStudentSorting",
+            "request": "launch",
+            "mainClass": "CTA6.TestStudentSorting",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
+            "name": "TestJava",
+            "request": "launch",
+            "mainClass": "CTA6.TestJava",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
             "name": "RecursiveProductCalculator",
             "request": "launch",
             "mainClass": "CTA5.RecursiveProductCalculator",
