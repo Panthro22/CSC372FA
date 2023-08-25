@@ -1,4 +1,4 @@
-package CTA6;  // Package name indicating the location of the class
+package CTA6;
 
 import java.util.Comparator;
 
@@ -6,9 +6,15 @@ import java.util.Comparator;
 public class RollNoComparator implements Comparator<Student> {
     @Override
     public int compare(Student s1, Student s2) {
-        // Compare the roll numbers of two Student objects
-        // and return the result of the comparison
-        return Integer.compare(s1.getRollno(), s2.getRollno());
+        int rollno1 = s1.getRollno();
+        int rollno2 = s2.getRollno();
+
+        if (rollno1 < rollno2) {
+            return -1; // s1 comes before s2
+        } else if (rollno1 > rollno2) {
+            return 1;  // s1 comes after s2
+        } else {
+            return 0;  // s1 and s2 have the same roll number
+        }
     }
 }
-
