@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "StudentDataIO",
+            "request": "launch",
+            "mainClass": "FinalProjectAndReflection.StudentDataIO",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
+            "name": "CountryListSetExample",
+            "request": "launch",
+            "mainClass": "CTA7.CountryListSetExample",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
+            "name": "SetListExample",
+            "request": "launch",
+            "mainClass": "CTA7.SetListExample",
+            "projectName": "CSC372_c6ccd789"
+        },
+        {
+            "type": "java",
             "name": "TestStudentSorting",
             "request": "launch",
             "mainClass": "CTA6.TestStudentSorting",

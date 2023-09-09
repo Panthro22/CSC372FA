@@ -1,15 +1,15 @@
-package CTA6;  // Package name indicating the location of the class
+package CTA6;  
 
 // Class representing a student with roll number, name, and address
 public class Student {
     private int rollno;        // Student's roll number
-    private String name;       // Student's name
-    private String address;    // Student's address
+    private String name;       
+    private String address;    
 
     // Constructor to initialize student attributes
     public Student(int rollno, String name, String address) {
-        this.rollno = rollno;      // Initialize roll number
-        this.name = name;          // Initialize name
+        this.rollno = rollno;      // Initialize roll number,
+        this.name = name;          // Initialize name,
         this.address = address;    // Initialize address
     }
 
